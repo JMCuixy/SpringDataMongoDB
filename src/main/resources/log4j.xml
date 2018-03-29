@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+<log4j:configuration>
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name='ConversionPattern' value='[%d]-[%p]-[Thread: %t]-[%C.%M():%L]: %m%n' />
+		</layout>
+	</appender>
+
+	<appender name="debugFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/usr/local/yycx/logs/admin/debug.log" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name='ConversionPattern' value='[%d]-[%p]-[Thread: %t]-[%C.%M():%L]: %m%n' />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="DEBUG"/>
+			<param name="levelMax" value="DEBUG"/>
+		</filter>
+	</appender>
+
+	<appender name="infoFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/usr/local/yycx/logs/admin/info.log" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name='ConversionPattern' value='[%d]-[%p]-[Thread: %t]-[%C.%M():%L]: %m%n' />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO"/>
+			<param name="LevelMax" value="INFO"/>
+		</filter>
+	</appender>
+
+	<appender name="errorFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/usr/local/yycx/logs/admin/error.log" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name='ConversionPattern' value='[%d]-[%p]-[Thread: %t]-[%C.%M():%L]: %m%n' />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR"/>
+			<param name="LevelMax" value="ERROR"/>
+		</filter>
+	</appender>
+
+	<root>
+		<level value="error"/>
+		<appender-ref ref="console"/>
+		<appender-ref ref="infoFile"/>
+		<appender-ref ref="debugFile"/>
+		<appender-ref ref="errorFile"/>
+	</root>
+</log4j:configuration>
