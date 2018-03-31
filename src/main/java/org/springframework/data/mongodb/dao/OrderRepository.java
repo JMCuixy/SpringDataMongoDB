@@ -1,4 +1,4 @@
-package org.springframework.data.mongodb.util;
+package org.springframework.data.mongodb.dao;
 
 import org.springframework.data.mongodb.entity.Order;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -16,6 +16,7 @@ public interface OrderRepository extends MongoRepository<Order, String>,OrderOpe
      * @return
      */
     //@Query会接受一个JSON查询，而不是JPA查询。?0 表示第一个参数，?1 表示第二个参数，以此类推
+    // find这个查询动词并不是固定的。如果喜欢的话，我们还可以使用get作为查询动词：
     @Query("{'customer':?0,'type':'type'}")
     List<Order> findByCustomer(String customer);
 

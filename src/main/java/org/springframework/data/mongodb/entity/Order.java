@@ -33,13 +33,12 @@ public class Order {
     @Indexed
     private String type;
 
-    
-    public String key;
 
     /**
-     * 集合类型最好使用 ? 不确定类型(或者使用任意类型)
-     * 否则会info（Found cycle for field 'itemList' in type 'Order' for path ''）
-     * 表明你的代码中有潜在的循环使用
+     * 集合类型最好使用 ? 不确定类型(或者说任意类型)
+     * 否则会info（Found cycle for field 'itemList' in type 'Order' for path ''）表明你的代码中有潜在的循环使用
+     *
+     * 像这样有另一个对象的集合，另一个对象不用加任何的MongoDB 注释
      */
     private List<?> itemList = new ArrayList();
 

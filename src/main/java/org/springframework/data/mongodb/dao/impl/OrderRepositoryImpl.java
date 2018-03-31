@@ -1,11 +1,11 @@
-package org.springframework.data.mongodb.util.impl;
+package org.springframework.data.mongodb.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.entity.Order;
-import org.springframework.data.mongodb.util.OrderOperations;
+import org.springframework.data.mongodb.dao.OrderOperations;
 
 import java.util.List;
 

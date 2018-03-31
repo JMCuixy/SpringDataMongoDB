@@ -135,7 +135,7 @@ public class Test02 {
         List<String> list = new ArrayList();
         Criteria condition = Criteria.where("x").lt(10).and("x").gt(5);
         Criteria criteria = Criteria.where("client").is("customer");
-        criteria.and("key").nin(list);
+        criteria.and("key").in(list);
         criteria.and("key").size(3); //匹配key数组长度等于 3 的文档
         criteria.elemMatch(condition); //要求 x 的数组每个元素必须同时满足 大于5 小于10
         criteria.and("key").exists(true);

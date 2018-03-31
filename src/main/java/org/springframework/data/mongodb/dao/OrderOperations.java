@@ -1,4 +1,4 @@
-package org.springframework.data.mongodb.util;
+package org.springframework.data.mongodb.dao;
 
 import org.springframework.data.mongodb.entity.Order;
 

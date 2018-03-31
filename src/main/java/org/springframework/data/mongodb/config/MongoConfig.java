@@ -21,6 +21,9 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @PropertySource("classpath:mongo.properties")
 public class MongoConfig {
 
+    /*
+    * MongoClientFactoryBean 工厂bean 会负责创建Mongo实例。
+    * */
     @Bean(name = "mongo")
     public MongoClientFactoryBean mongoClientFactoryBean(Environment env) {
         MongoClientOptions.Builder builder = MongoClientOptions.builder();
@@ -37,6 +40,7 @@ public class MongoConfig {
         return mongoClientFactoryBean;
     }
 
+    /* 2.0 之后不支持这种构造器了 */
     @Bean(name = "mongoTemplate")
     public MongoTemplate mongoTemplate(Mongo mongo, Environment env) {
         return new MongoTemplate(mongo, env.getProperty("mongo.database", String.class));
