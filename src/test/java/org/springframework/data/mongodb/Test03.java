@@ -28,6 +28,7 @@ public class Test03 {
     @Autowired
     private MongoOperations mongoOperations;
 
+    /*near*/
 
     /**
      * $near 查询附近位置
@@ -53,6 +54,19 @@ public class Test03 {
         List<GeoResult<Object>> content = geoResults.getContent();
 
     }
+
+    /*nearSphere*/
+    @Test
+    public void nearSphereTest(){
+        Point x = new Point(118.193828, 24.492242);
+        Criteria criteria = Criteria.where("coordinate").nearSphere(x);
+        criteria.maxDistance(3000 / EARTH_RADIUS);
+        Query query = new Query(criteria);
+        List<Object> objects = mongoOperations.find(query, Object.class);
+    }
+
+
+    /*within*/
 
     /**
      * "$geoWithin"操作符找出完全包含在某个区域的文档？
@@ -98,6 +112,7 @@ public class Test03 {
      * }
      * )
      */
+    @Test
     public void withInBoxTest() {
         Point x = new Point(118.0, 24.0);
         Point y = new Point(120.0, 30.0);
@@ -120,6 +135,7 @@ public class Test03 {
      * }
      * )
      */
+    @Test
     public void withInCircleTest() {
         Point point = new Point(118.067678, 24.444373);
         Distance distance = new Distance(10, Metrics.KILOMETERS);
@@ -141,6 +157,7 @@ public class Test03 {
      * }
      * )
      */
+    @Test
     public void withInPolygonTest() {
         Point x = new Point(118.193828, 24.492242);
         Point y = new Point(118.193953, 24.702114);
@@ -165,6 +182,7 @@ public class Test03 {
      * }
      * )
      */
+    @Test
     public void withInCenterSphereTest(){
         Circle circle = new Circle(118.067678 , 24.444373 , 10/3963.2);
         Criteria criteria = Criteria.where("coordinate").withinSphere(circle);
@@ -172,6 +190,7 @@ public class Test03 {
         List<Object> objects = mongoOperations.find(query, Object.class);
     }
 
+    /*Intersects*/
 
     /**
      * "$geoIntersects" 操作符找出与查询位置相交的文档 ？
@@ -190,7 +209,8 @@ public class Test03 {
      *    }
      * )
      */
-    public void withInTest(){
+    @Test
+    public void intersectsTest(){
         Point x = new Point(118.193828, 24.492242);
         Point y = new Point(118.193953, 24.702114);
         Point z = new Point(119.19387, 28.792242);
